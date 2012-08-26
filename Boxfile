@@ -24,6 +24,7 @@ web1:
     php_date_timezone: America/Detroit
 
     after_build:
+        - "cp app/config/parameters.pagoda.yml app/config/parameters.yml"
         - "curl -s http://getcomposer.org/installer | php -- --quiet; php composer.phar install -n"
         - "php app/console --env=prod --no-debug assetic:dump -n"
     before_deploy:
