@@ -17,6 +17,7 @@ web1:
      - mysql
      - pdo_mysql
      - zip
+
     php_short_open_tag: "0"
     php_magic_quotes_gpc: "0"
     php_register_globals: "0"
@@ -31,3 +32,7 @@ web1:
         - "php app/console --env=prod --no-debug cache:clear --no-warmup"
         - "php app/console --env=prod --no-debug cache:warmup"
         #- "php app/console --env=prod --no-debug doctrine:migrations:migrate -n"
+
+db1:
+    name: symfony
+    type: mysql
