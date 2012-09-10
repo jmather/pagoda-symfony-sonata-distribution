@@ -28,6 +28,7 @@ web1:
         - "cp app/config/parameters.pagoda.yml app/config/parameters.yml"
         - "curl -s http://getcomposer.org/installer | php -- --quiet; php composer.phar install -n"
         - "php app/console --env=prod --no-debug assetic:dump -n"
+        - "php vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/data/build-data.php"
     before_deploy:
         - "php app/console --env=prod --no-debug cache:clear --no-warmup"
         - "php app/console --env=prod --no-debug cache:warmup"
@@ -36,3 +37,7 @@ web1:
 db1:
     name: symfony
     type: mysql
+
+global:
+    env:
+        - USE_INTL_ICU_DATA_VERSION: true
